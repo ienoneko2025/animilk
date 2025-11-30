@@ -12,6 +12,16 @@ from player_window import PlayerWindow
 from user_preferences import UserPreferences
 
 class LoaderDialog(QWidget):
+  class _WaitPlayer(QEventLoop):
+    def __init__(self, player: PlayerWindow):
+      QEventLoop.__init__(self)
+
+      player.playerQuit.connect(self.__do_quit)
+
+    @Slot()
+    def __do_quit(self):
+      self.quit()
+
   def __init__(self):
     QWidget.__init__(self)
 
@@ -75,8 +85,6 @@ class LoaderDialog(QWidget):
     vid_path = self.__ui.fieldVidFileUrl.text()
     vid_url = QUrl.fromLocalFile(vid_path)
 
-    # TODO: show loader window again after player is closed
-
     player = PlayerWindow(annotations, vid_url)
     player.show()
 
@@ -93,4 +101,6 @@ class LoaderDialog(QWidget):
 
     self.close()
 
-    QEventLoop().exec()
+    self._WaitPlayer(player).exec()
+
+    self.show()

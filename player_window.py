@@ -1,7 +1,7 @@
 from typing import cast
 
 from PySide6.QtCore import Qt, QEvent, QObject, QUrl, Signal, Slot
-from PySide6.QtGui import QKeyEvent, QMouseEvent, QShortcut
+from PySide6.QtGui import QCloseEvent, QKeyEvent, QMouseEvent, QShortcut
 from PySide6.QtMultimedia import QAudioOutput, QMediaPlayer
 from PySide6.QtWidgets import QWidget
 
@@ -10,6 +10,8 @@ from ui_player_window import Ui_PlayerWindow
 from annotations import Annotations
 
 class PlayerWindow(QWidget):
+  playerQuit = Signal()
+
   class _PlayerControllings(QObject):
     toggleFullscreen = Signal()
     playOrPause = Signal()
@@ -61,6 +63,14 @@ class PlayerWindow(QWidget):
     self.__side_bar_toggle = QShortcut(Qt.KeyboardModifier.ControlModifier | Qt.Key.Key_B, self)
     self.__side_bar_toggle.activated.connect(self.__do_toggle_side_bar)
 
+  def closeEvent(self, event: QCloseEvent):
+    if self.__mp.isPlaying():
+      self.__mp.stop()
+
+    self.playerQuit.emit()
+
+    QWidget.closeEvent(self, event)
+
   @Slot()
   def __do_toggle_fullscreen(self):
     if self.isFullScreen():
@@ -85,6 +95,4 @@ class PlayerWindow(QWidget):
 
   @Slot()
   def __do_quit(self):
-    if self.__mp.isPlaying():
-      self.__mp.stop()
     self.close()
