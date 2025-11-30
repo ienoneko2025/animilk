@@ -22,7 +22,7 @@ for dropout_form in "${dropout_forms[@]}"; do
   dropout_out="ui_${dropout_form}.py"
   dropout_src="${dropout_form}.ui"
 
-  if [ -e "$dropout_out" -a "$dropout_src" -ot "$dropout_out" -a "$dropout_out" -nt "$(which uic)" ]; then
+  if [ -e "$dropout_out" -a "$dropout_src" -ot "$dropout_out" -a "$dropout_out" -nt "$(which uic)" -a "$dropout_out" -nt "$0" ]; then
     # already up-to-date
     continue
   fi
