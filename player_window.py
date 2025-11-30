@@ -58,8 +58,8 @@ class PlayerWindow(QWidget):
     self.__ctrls.quitRequest.connect(self.__do_quit)
     self.__ui.vidWidget.installEventFilter(self.__ctrls)
 
-    self.__toggle_side_bar = QShortcut(Qt.KeyboardModifier.ControlModifier | Qt.Key.Key_B, self)
-    self.__toggle_side_bar.activated.connect(self.__do_toggle_side_bar)
+    self.__side_bar_toggle = QShortcut(Qt.KeyboardModifier.ControlModifier | Qt.Key.Key_B, self)
+    self.__side_bar_toggle.activated.connect(self.__do_toggle_side_bar)
 
   @Slot()
   def __do_toggle_fullscreen(self):
