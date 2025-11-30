@@ -1,4 +1,4 @@
-from typing import cast
+from typing import cast, override
 
 from PySide6.QtCore import Qt, QEvent, QObject, QUrl, Signal, Slot
 from PySide6.QtGui import QCloseEvent, QKeyEvent, QMouseEvent, QShortcut
@@ -17,6 +17,7 @@ class PlayerWindow(QWidget):
     playOrPause = Signal()
     quitRequest = Signal()
 
+    @override
     def eventFilter(self, watched: QObject, event: QEvent) -> bool:
       match event.type():
         case QEvent.Type.MouseButtonPress:
@@ -63,6 +64,7 @@ class PlayerWindow(QWidget):
     self.__side_bar_toggle = QShortcut(Qt.KeyboardModifier.ControlModifier | Qt.Key.Key_B, self)
     self.__side_bar_toggle.activated.connect(self.__do_toggle_side_bar)
 
+  @override
   def closeEvent(self, event: QCloseEvent):
     if self.__mp.isPlaying():
       self.__mp.stop()
