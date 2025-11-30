@@ -2,7 +2,7 @@ from os.path import exists
 from traceback import format_exc, print_exc
 from typing import Optional
 
-from PySide6.QtCore import Slot, QEventLoop, QUrl
+from PySide6.QtCore import QEventLoop, QUrl, Slot
 from PySide6.QtWidgets import QFileDialog, QMessageBox, QWidget
 
 from ui_loader_dlg import Ui_LoaderDialog
