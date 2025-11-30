@@ -3,13 +3,21 @@ from typing import cast, override
 from PySide6.QtCore import Qt, QEvent, QObject, QUrl, Signal, Slot
 from PySide6.QtGui import QCloseEvent, QKeyEvent, QMouseEvent, QShortcut
 from PySide6.QtMultimedia import QAudioOutput, QMediaPlayer
+from PySide6.QtWebEngineCore import QWebEngineUrlScheme
 from PySide6.QtWidgets import QWidget
 
 from ui_player_window import Ui_PlayerWindow
 
 from annotations import Annotations
 
+def _setup_qrc_for_webview():
+  scheme = QWebEngineUrlScheme('qrc'.encode())
+  scheme.setFlags(QWebEngineUrlScheme.Flag.SecureScheme | QWebEngineUrlScheme.Flag.ViewSourceAllowed | QWebEngineUrlScheme.Flag.FetchApiAllowed)
+  QWebEngineUrlScheme.registerScheme(scheme)
+
 class PlayerWindow(QWidget):
+  _setup_qrc_for_webview()
+
   playerQuit = Signal()
 
   class _PlayerControllings(QObject):

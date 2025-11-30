@@ -22,7 +22,13 @@
     </widget>
    </item>
    <item>
-    <widget class="QWebEngineView" name="webView"/>
+    <widget class="QWebEngineView" name="webView">
+     <property name="url">
+      <url>
+       <string>qrc:/animecho/dialogue_view.html</string>
+      </url>
+     </property>
+    </widget>
    </item>
   </layout>
  </widget>
@@ -38,6 +44,8 @@
    <header location="global">QtWebEngineWidgets/QWebEngineView</header>
   </customwidget>
  </customwidgets>
- <resources/>
+ <resources>
+  <include location="webpage.qrc"/>
+ </resources>
  <connections/>
 </ui>

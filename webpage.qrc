@@ -1,0 +1,9 @@
+<RCC>
+  <qresource prefix="/animecho">
+    <file compression-algorithm="none">dialogue_view.wasm</file>
+    <file>dialogue_view.js</file>
+    <file>qtloader.js</file>
+    <file>dialogue_view.html</file>
+    <file>qtlogo.svg</file>
+  </qresource>
+</RCC>

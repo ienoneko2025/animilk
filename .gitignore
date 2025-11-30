@@ -1,1 +1,9 @@
 /ui_*.py
+/*_rc.py
+/moc_*.cpp
+
+/*.wasm
+/dialogue_view.js
+/qtloader.js
+/dialogue_view.html
+/qtlogo.svg
