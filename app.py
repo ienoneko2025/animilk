@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 from sys import exit, stderr, version_info
 
 if version_info < (3, 12):
