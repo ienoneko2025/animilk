@@ -2,6 +2,17 @@
 /*_rc.py
 /moc_*.cpp
 
+__pycache__/
+.cache/
+CMakeCache.txt
+CMakeFiles/
+build.ninja
+compile_commands.json
+.ninja_*
+.qt/
+moc_*.cpp_parameters*
+cmake_install.cmake
+
 /*.wasm
 /dialogue_view.js
 /qtloader.js
