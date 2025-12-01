@@ -31,7 +31,7 @@ for dropout_form in "${dropout_forms[@]}"; do
     continue
   fi
 
-  (set -x && uic --no-autoconnection -g python -o "$dropout_out" "$dropout_src")
+  (set -x && uic -g python -o "$dropout_out" "$dropout_src")
 done
 
 dropout_static_web_files=('dialogue_view.wasm'
