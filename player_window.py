@@ -4,7 +4,7 @@ from PySide6.QtCore import Qt, QEvent, QObject, QUrl, Signal, Slot
 from PySide6.QtGui import QCloseEvent, QMouseEvent
 from PySide6.QtMultimedia import QAudioOutput, QMediaPlayer
 from PySide6.QtWebEngineCore import QWebEngineUrlScheme
-from PySide6.QtWidgets import QMainWindow
+from PySide6.QtWidgets import QMainWindow, QMessageBox
 
 from ui_player_window import Ui_PlayerWindow
 
@@ -55,7 +55,7 @@ class PlayerWindow(QMainWindow):
 
     self.__ao = QAudioOutput()
     self.__mp = QMediaPlayer(source=vid_url, audioOutput=self.__ao, videoOutput=self.__ui.vidWidget)
-    # TODO: handle errors
+    self.__mp.errorOccurred.connect(self.__do_show_mp_err)
 
     self.__mouse_ctrls = self._PlayerMouseControls()
     self.__mouse_ctrls.toggleFullscreen.connect(self.__do_toggle_fullscreen)
@@ -83,6 +83,10 @@ class PlayerWindow(QMainWindow):
     match event.type():
       case QEvent.Type.WindowStateChange:
         self.__ui.actionFullscreen.setChecked(bool(self.windowState() & Qt.WindowState.WindowFullScreen))
+
+  @Slot(QMediaPlayer.Error, str)
+  def __do_show_mp_err(self, err: QMediaPlayer.Error, strerror: str):
+    QMessageBox.warning(self, 'An error occurred', strerror)
 
   @Slot()
   def __do_toggle_fullscreen(self):
