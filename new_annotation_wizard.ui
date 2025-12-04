@@ -19,7 +19,10 @@
      <item>
       <widget class="QLabel" name="headerSaveLocation">
        <property name="text">
-        <string>Save Location:</string>
+        <string>&amp;Save Location:</string>
+       </property>
+       <property name="buddy">
+        <cstring>btnPickSaveLocation</cstring>
        </property>
       </widget>
      </item>
@@ -56,7 +59,10 @@
         <item>
          <widget class="QLabel" name="headerVidFile">
           <property name="text">
-           <string>Video File:</string>
+           <string>&amp;Video File:</string>
+          </property>
+          <property name="buddy">
+           <cstring>btnPickVidFile</cstring>
           </property>
          </widget>
         </item>
@@ -116,7 +122,7 @@
      <item>
       <widget class="QPushButton" name="btnOK">
        <property name="text">
-        <string>OK</string>
+        <string>&amp;OK</string>
        </property>
       </widget>
      </item>

@@ -19,7 +19,10 @@
      <item>
       <widget class="QLabel" name="headerAnnotationFile">
        <property name="text">
-        <string>Annotation File:</string>
+        <string>&amp;Annotation File:</string>
+       </property>
+       <property name="buddy">
+        <cstring>btnPickAnnotationFile</cstring>
        </property>
       </widget>
      </item>
@@ -50,7 +53,10 @@
      <item>
       <widget class="QLabel" name="headerVidFile">
        <property name="text">
-        <string>Video File:</string>
+        <string>&amp;Video File:</string>
+       </property>
+       <property name="buddy">
+        <cstring>btnPickVidFile</cstring>
        </property>
       </widget>
      </item>
@@ -94,7 +100,7 @@
      <item>
       <widget class="QRadioButton" name="radioBtnUsePlayer">
        <property name="text">
-        <string>Player</string>
+        <string>&amp;Player</string>
        </property>
        <property name="checked">
         <bool>true</bool>
@@ -110,7 +116,7 @@
      <item>
       <widget class="QRadioButton" name="radioBtnUseEditor">
        <property name="text">
-        <string>Editor</string>
+        <string>&amp;Editor</string>
        </property>
        <property name="autoExclusive">
         <bool>false</bool>
@@ -166,7 +172,7 @@
      <item>
       <widget class="QPushButton" name="btnCreateNew">
        <property name="text">
-        <string>Create New…</string>
+        <string>Create &amp;New…</string>
        </property>
        <property name="icon">
         <iconset theme="QIcon::ThemeIcon::DocumentNew"/>
@@ -179,7 +185,7 @@
         <bool>false</bool>
        </property>
        <property name="text">
-        <string>OK</string>
+        <string>&amp;OK</string>
        </property>
       </widget>
      </item>
